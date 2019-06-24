@@ -1,10 +1,10 @@
 /* Latest News Area css
 ============================================================================================ */
 .latest_news_area{
-    
+
 }
 .l_news_inner{
-    
+
 }
 .l_news_item{
     @include transition;
@@ -53,10 +53,10 @@
 /* Static Area css
 ============================================================================================ */
 .static_area{
-    padding: 100px 0px;
+    padding: 40px 0px;
 }
 .static_inner{
-    
+
 }
 .static_main_content{
     position: relative;
@@ -79,7 +79,7 @@
                 display: block;
                 border-radius: 50%;
                 line-height: 30px;
-                
+
             }
             &:nth-child(2){
                 a{
@@ -97,7 +97,6 @@
                 }
             }
             &:nth-child(5){
-                margin-bottom: 0px;
                 a{
                     background: #f0c605;
                 }
@@ -183,7 +182,7 @@
         color: #1e1e27;
         font-family: $pop;
         font-weight: 500;
-    }    
+    }
 }
 .r_news_widget{
     .news_inner{
@@ -195,7 +194,7 @@
                 font-size: 16px;
                 line-height: 26px;
                 font-family: $pop;
-                font-weight: 500; 
+                font-weight: 500;
                 color: #1e1e27;
                 padding-bottom: 7px;
                 @include transition;
@@ -276,7 +275,7 @@
                 a{
                     color: $baseColor;
                 }
-            }    
+            }
         }
     }
 }

@@ -19,7 +19,13 @@ return [
             'what_products_prefer' => 'What products do you prefer?',
             'how_your_day_going' => 'How is your day doing?',
             'how_many_meals' => 'How many meals do you prefer?',
-            'measures' => 'Measures'
+            'measures' => 'Measures',
+            'meats' => [
+                'a',
+                'b',
+                'c',
+                'd'
+            ]
         ]
     ]
 ];

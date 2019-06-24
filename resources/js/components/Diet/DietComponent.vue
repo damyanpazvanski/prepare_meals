@@ -10,19 +10,32 @@
                         <div class="col-md-8 offset-2">
                             <div class="static_main_content">
                                 <div class="static_social">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></li>
+                                    <ul class="diet-steps-counter">
+                                        <li :class="{'active': page === 1}">1</li>
+                                        <li :class="{'active': page === 2}">2</li>
+                                        <li :class="{'active': page === 3}">3</li>
+                                        <li :class="{'active': page === 4}">4</li>
+                                        <li :class="{'active': page === 5}">5</li>
+                                        <li :class="{'active': page === 6}">6</li>
+                                        <li :class="{'active': page === 7}">7</li>
+                                        <li :class="{'active': page === 8}">8</li>
                                     </ul>
                                 </div>
 
-                                <gender v-if="page === 1" @selected="selected"></gender>
-                                <activity v-if="page === 2" @selected="selected"></activity>
+                                <div class="col-12" v-if="hasError">
+                                    <div class="alert alert-danger">All fields are required!</div>
+                                </div>
 
-                                <button class="btn btn-dark btn-lg btn-block" @click="back">Back</button>
+                                <meats v-if="page === 1" @selected="selected" @error="error" :meats-titles="trans.meats"></meats>
+
+                                <!--<measures v-if="page === 1" @selected="selected" @error="error"></measures>-->
+
+                                <!--<gender v-if="page === 1" @selected="selected"></gender>-->
+                                <!--<activity v-if="page === 2" @selected="selected"></activity>-->
+                                <!--<daily-routine v-if="page === 3" @selected="selected"></daily-routine>-->
+                                <!--<meals v-if="page === 4" @selected="selected"></meals>-->
+
+                                <button class="btn btn-dark btn-lg btn-block mt-4" @click="back">Back</button>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -31,7 +44,7 @@
                                     <div class="r_w_title">
                                         <h3>{{ trans.steps }}</h3>
                                     </div>
-                                    <ul>
+                                    <ul class="diet-steps-counter">
                                         <li :class="{'active': page === 1}">{{ trans.gender }}</li>
                                         <li :class="{'active': page === 2}">{{ trans.activity }}</li>
                                         <li :class="{'active': page === 3}">{{ trans.what_meat_prefer }}</li>
@@ -56,6 +69,10 @@
 
     import Gender from './Steps/GenderComponent';
     import Activity from './Steps/ActivityComponent';
+    import DailyRoutine from './Steps/DailyRoutineComponent';
+    import Meals from './Steps/MealsComponent';
+    import Measures from './Steps/MeasuresComponent';
+    import Meats from './Steps/MeatsComponent';
 
     export default {
         props: ['trans'],
@@ -63,26 +80,47 @@
             'header-component': Header,
             'gender': Gender,
             'activity': Activity,
+            'daily-routine': DailyRoutine,
+            'meals': Meals,
+            'measures': Measures,
+            'meats': Meats,
         },
         data() {
             return {
                 page: 1,
                 userData: {},
+                hasError: false,
             }
         },
         methods: {
             selected(data) {
+                this.hasError = false;
                 this.userData = Object.assign(this.userData, data);
                 this.page++;
             },
             back() {
+                if (this.page === 1) {
+                    return;
+                }
+
                 this.page--;
+            },
+            error() {
+                this.hasError = true;
             }
         }
     }
 </script>
 <style scoped>
     .active {
-        background: turquoise;
+        background: #2bc0a4!important;
+    }
+    .diet-steps-counter li {
+        font-weight: 700;
+        color: #FFFFFF;
+        background: #3490dc;
+        padding: 5px 14px;
+        border-radius: 10px;
+        margin-bottom: 10px;
     }
 </style>
