@@ -12,7 +12,7 @@
         methods: {
             select(activityId) {
                 this.$emit('selected', {
-                    'gender': activityId
+                    'activity': activityId
                 })
             }
         }

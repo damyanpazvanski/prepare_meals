@@ -12,7 +12,7 @@
         methods: {
             select(routineId) {
                 this.$emit('selected', {
-                    'gender': routineId
+                    'routine': routineId
                 })
             }
         }

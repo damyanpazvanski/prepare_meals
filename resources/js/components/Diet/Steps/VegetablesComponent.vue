@@ -1,6 +1,6 @@
 <template>
-    <div class="col-12 meats">
-        <div class="row mb-3" v-for="vegetableTitle in meatsTitles">
+    <div class="col-12 products-list">
+        <div class="row mb-3" v-for="vegetableTitle in vegetablesTitles">
             <div class="custom-checkbox custom-control">
                 <input type="checkbox" :id="vegetableTitle" :name="vegetableTitle" :value="vegetableTitle" v-model="vegetables" class="custom-control-input">
                 <label :for="vegetableTitle" class="col-12 pl-4 custom-control-label">{{ vegetableTitle }}</label>
@@ -12,7 +12,7 @@
 </template>
 <script>
     export default {
-        props: ['meatsTitles'],
+        props: ['vegetablesTitles'],
         data() {
             return {
                 vegetables: []
@@ -33,15 +33,15 @@
     }
 </script>
 <style scoped>
-    .meats .row {
+    .products-list .row {
         border-bottom: 2px solid #d3d3d3;
     }
-    .meats input {
+    .products-list input {
         height: 30px;
         width: 30px;
         margin: 3px;
     }
-    .meats label {
+    .products-list label {
         cursor: pointer;
         word-wrap: break-word;
         word-break: break-all;

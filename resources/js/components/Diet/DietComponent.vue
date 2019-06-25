@@ -26,14 +26,15 @@
                                     <div class="alert alert-danger">All fields are required!</div>
                                 </div>
 
-                                <meats v-if="page === 1" @selected="selected" @error="error" :meats-titles="trans.meats"></meats>
-
-                                <!--<measures v-if="page === 1" @selected="selected" @error="error"></measures>-->
-
-                                <!--<gender v-if="page === 1" @selected="selected"></gender>-->
-                                <!--<activity v-if="page === 2" @selected="selected"></activity>-->
-                                <!--<daily-routine v-if="page === 3" @selected="selected"></daily-routine>-->
-                                <!--<meals v-if="page === 4" @selected="selected"></meals>-->
+                                <gender v-if="page === 1" @selected="selected"></gender>
+                                <measures v-if="page === 2" @selected="selected" @error="error"></measures>
+                                <activity v-if="page === 3" @selected="selected"></activity>
+                                <daily-routine v-if="page === 4" @selected="selected"></daily-routine>
+                                <meats v-if="page === 5" @selected="selected" @error="error" :meats-titles="trans.meats"></meats>
+                                <vegetables v-if="page === 6" @selected="selected" @error="error" :vegetables-titles="trans.vegetables"></vegetables>
+                                <fruits v-if="page === 7" @selected="selected" @error="error" :fruits-titles="trans.fruits"></fruits>
+                                <products v-if="page === 8" @selected="selected" @error="error" :products-titles="trans.products"></products>
+                                <meals v-if="page === 9" @selected="selected"></meals>
 
                                 <button class="btn btn-dark btn-lg btn-block mt-4" @click="back">Back</button>
                             </div>
@@ -46,13 +47,14 @@
                                     </div>
                                     <ul class="diet-steps-counter">
                                         <li :class="{'active': page === 1}">{{ trans.gender }}</li>
-                                        <li :class="{'active': page === 2}">{{ trans.activity }}</li>
-                                        <li :class="{'active': page === 3}">{{ trans.what_meat_prefer }}</li>
-                                        <li :class="{'active': page === 4}">{{ trans.what_vegetables_prefer }}</li>
-                                        <li :class="{'active': page === 5}">{{ trans.what_products_prefer }}</li>
-                                        <li :class="{'active': page === 6}">{{ trans.how_your_day_going }}</li>
-                                        <li :class="{'active': page === 7}">{{ trans.how_many_meals }}</li>
-                                        <li :class="{'active': page === 8}">{{ trans.measures }}</li>
+                                        <li :class="{'active': page === 2}">{{ trans.measures }}</li>
+                                        <li :class="{'active': page === 3}">{{ trans.activity }}</li>
+                                        <li :class="{'active': page === 4}">{{ trans.how_your_day_going }}</li>
+                                        <li :class="{'active': page === 5}">{{ trans.what_meat_prefer }}</li>
+                                        <li :class="{'active': page === 6}">{{ trans.what_vegetables_prefer }}</li>
+                                        <li :class="{'active': page === 7}">{{ trans.what_fruits_prefer }}</li>
+                                        <li :class="{'active': page === 8}">{{ trans.what_products_prefer }}</li>
+                                        <li :class="{'active': page === 9}">{{ trans.how_many_meals }}</li>
                                     </ul>
                                 </aside>
                             </div>
@@ -68,11 +70,14 @@
     import Header from './HeaderComponent';
 
     import Gender from './Steps/GenderComponent';
+    import Measures from './Steps/MeasuresComponent';
     import Activity from './Steps/ActivityComponent';
     import DailyRoutine from './Steps/DailyRoutineComponent';
-    import Meals from './Steps/MealsComponent';
-    import Measures from './Steps/MeasuresComponent';
     import Meats from './Steps/MeatsComponent';
+    import Vegetables from './Steps/VegetablesComponent';
+    import Fruits from './Steps/FruitsComponent';
+    import Products from './Steps/ProductsComponent';
+    import Meals from './Steps/MealsComponent';
 
     export default {
         props: ['trans'],
@@ -84,6 +89,9 @@
             'meals': Meals,
             'measures': Measures,
             'meats': Meats,
+            'vegetables': Vegetables,
+            'fruits': Fruits,
+            'products': Products,
         },
         data() {
             return {
