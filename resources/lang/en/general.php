@@ -21,28 +21,43 @@ return [
             'what_products_prefer' => 'What products do you prefer?',
             'how_many_meals' => 'How many meals do you prefer?',
             'meats' => [
-                'a',
-                'b',
-                'c',
-                'd'
+                'Beef',
+                'Fish',
+                'Shrimps',
+                'Chicken',
+                'Pork',
+                'Turkey'
             ],
             'vegetables' => [
-                'a',
-                'b',
-                'c',
-                'd'
+                'Avocado',
+                'Potatoes',
+                'Green beans',
+                'Rise',
+                'Olives',
+                'Oats',
+                'Quinoa',
+                'Sweet potatoes'
             ],
             'fruits' => [
-                'a',
-                'b',
-                'c',
-                'd'
+                'Orange',
+                'Pumpkin',
+                'Forest fruits',
+                'Apple',
+                'Banana',
+                'Pineapple',
+                'Grapefruit',
+                'Melon'
             ],
             'products' => [
-                'a',
-                'b',
-                'c',
-                'd'
+                'Eggs',
+                'Mushrooms',
+                'Nuts',
+                'Yogurt',
+                'Soy milk',
+                'Peanut butter',
+                'Feta cheese',
+                'Cheese',
+                'Cottage cheese'
             ]
         ]
     ]

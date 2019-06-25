@@ -7,6 +7,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Loader
+@import './loader';
+
 .nav-logo {
   max-width: 136px!important;
   max-height: 56px!important;

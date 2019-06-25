@@ -1,5 +1,9 @@
 <template>
     <div>
+        <div class="roller-wrapper" v-if="loader">
+            <div class="roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+
         <header-component image-src="/images/banner/banner-1.jpg"></header-component>
 
         <!--================Static Area =================-->
@@ -10,7 +14,7 @@
                         <div class="col-md-8 offset-2">
                             <div class="static_main_content">
                                 <div class="static_social">
-                                    <ul class="diet-steps-counter">
+                                    <ul class="diet-steps-counter" v-if="!isLastPage">
                                         <li :class="{'active': page === 1}">1</li>
                                         <li :class="{'active': page === 2}">2</li>
                                         <li :class="{'active': page === 3}">3</li>
@@ -36,11 +40,13 @@
                                 <products v-if="page === 8" @selected="selected" @error="error" :products-titles="trans.products"></products>
                                 <meals v-if="page === 9" @selected="selected"></meals>
 
-                                <button class="btn btn-dark btn-lg btn-block mt-4" @click="back">Back</button>
+                                <last-page v-if="isLastPage" :data="userData"></last-page>
+
+                                <button class="btn btn-dark btn-lg btn-block mt-4" v-if="!isLastPage" @click="back">Back</button>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="right_sidebar_area">
+                            <div class="right_sidebar_area" v-if="!isLastPage">
                                 <aside class="right_widget r_cat_widget">
                                     <div class="r_w_title">
                                         <h3>{{ trans.steps }}</h3>
@@ -79,9 +85,12 @@
     import Products from './Steps/ProductsComponent';
     import Meals from './Steps/MealsComponent';
 
+    import LastPage from './Steps/LastPageComponent';
+
     export default {
         props: ['trans'],
         components: {
+            LastPage,
             'header-component': Header,
             'gender': Gender,
             'activity': Activity,
@@ -92,12 +101,16 @@
             'vegetables': Vegetables,
             'fruits': Fruits,
             'products': Products,
+            'last-page': LastPage
         },
         data() {
             return {
                 page: 1,
+                maxPages: 10,
                 userData: {},
                 hasError: false,
+                isLastPage: false,
+                loader: false,
             }
         },
         methods: {
@@ -105,6 +118,15 @@
                 this.hasError = false;
                 this.userData = Object.assign(this.userData, data);
                 this.page++;
+
+                if (this.page === this.maxPages) {
+                    this.loader = true;
+
+                    setTimeout(() => {
+                        this.loader = false;
+                        this.isLastPage = true;
+                    }, 3000);
+                }
             },
             back() {
                 if (this.page === 1) {
