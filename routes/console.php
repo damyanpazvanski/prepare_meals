@@ -16,3 +16,10 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('db:seed', function () {
+    $this->callSilent('add:categories', []);
+    $this->callSilent('add:activities', []);
+    $this->callSilent('add:daily-routines', []);
+    $this->callSilent('add:meals', []);
+});
