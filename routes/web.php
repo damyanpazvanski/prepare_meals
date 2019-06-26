@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('diet');
+Route::get('/language/{lang}', 'LanguageController@change')->name('language.change');
+
+Route::prefix('{lang}')->group(function () {
+    Route::get('prepare-diet', function () {
+        return view('diet');
+    });
 });
+
+//Route::get('/', function () {
+//    return view('diet');
+//});
+

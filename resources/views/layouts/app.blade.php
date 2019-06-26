@@ -65,6 +65,10 @@
                 <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ request()->fullUrlWithQuery(['language' => 'en']) }}">EN</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ request()->fullUrlWithQuery(['language' => 'bg']) }}">BG</a></li>
+            </ul>
             {{--<ul class="navbar-nav justify-content-end">--}}
                 {{--<li><a href="#"><i class="icon_search"></i></a></li>--}}
                 {{--<li><a href="#"><i class="icon_bag_alt"></i></a></li>--}}
