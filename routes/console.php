@@ -18,6 +18,7 @@ Artisan::command('inspire', function () {
 })->describe('Display an inspiring quote');
 
 Artisan::command('db:seed', function () {
+    $this->callSilent('add:genders', []);
     $this->callSilent('add:categories', []);
     $this->callSilent('add:activities', []);
     $this->callSilent('add:daily-routines', []);
