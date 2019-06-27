@@ -20,45 +20,17 @@ return [
             'what_fruits_prefer' => 'What fruits do you prefer?',
             'what_products_prefer' => 'What products do you prefer?',
             'how_many_meals' => 'How many meals do you prefer?',
-            'meats' => [
-                'Beef',
-                'Fish',
-                'Shrimps',
-                'Chicken',
-                'Pork',
-                'Turkey'
-            ],
-            'vegetables' => [
-                'Avocado',
-                'Potatoes',
-                'Green beans',
-                'Rise',
-                'Olives',
-                'Oats',
-                'Quinoa',
-                'Sweet potatoes'
-            ],
-            'fruits' => [
-                'Orange',
-                'Pumpkin',
-                'Forest fruits',
-                'Apple',
-                'Banana',
-                'Pineapple',
-                'Grapefruit',
-                'Melon'
-            ],
-            'products' => [
-                'Eggs',
-                'Mushrooms',
-                'Nuts',
-                'Yogurt',
-                'Soy milk',
-                'Peanut butter',
-                'Feta cheese',
-                'Cheese',
-                'Cottage cheese'
+            'measure_fields' => [
+                'age' => 'Age',
+                'height' => 'Height (Centimeters)',
+                'weight' => 'Weight (Kilograms)',
+                'wanted_weight' => 'Wanted Weight (Kilograms)',
+                'note' => 'Note: Wanted Weight should be in interval of 10-15 kilograms from the current Weight for best results.'
             ]
         ]
+    ],
+    'genders' => [
+        'man' => 'Man',
+        'woman' => 'Woman'
     ]
 ];

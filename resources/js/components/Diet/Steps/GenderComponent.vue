@@ -1,18 +1,15 @@
 <template>
     <div class="col-12 row">
-        <div class="col-5 offset-2">
-            <img src="/images/woman.png" alt="woman" class="gender-img col-12" @click="select(0)">
+        <div class="col-2"></div>
+        <div class="col-5" v-for="gender in genders">
+            {{ gender.translation.translation }}
+            <img :src="'/images/' + gender.translation.key + '.png'" :alt="gender.translation.key" class="gender-img col-12" @click="select(gender.id)">
         </div>
-        <div class="col-5">
-            <img src="/images/man.png" alt="man" class="gender-img col-12" @click="select(1)">
-        </div>
-        <!--<div class="mt-3 mb-3 col-12 row">-->
-            <!--<button class="btn btn-primary col-6" @click="select">SELECT</button>-->
-        <!--</div>-->
     </div>
 </template>
 <script>
     export default {
+        props: ['genders'],
         methods: {
             select(genderId) {
                 this.$emit('selected', {

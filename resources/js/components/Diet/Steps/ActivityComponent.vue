@@ -1,14 +1,12 @@
 <template>
     <ul class="activities col-12 text-center">
-        <li class="bnt btn-outline-primary btn-sm" @click="select(0)">Almost nothing</li>
-        <li class="bnt btn-outline-primary btn-sm" @click="select(1)">I often walk around</li>
-        <li class="bnt btn-outline-primary btn-sm" @click="select(2)">I workout 1-2 times per week</li>
-        <li class="bnt btn-outline-primary btn-sm" @click="select(3)">I workout 3-5 times per week</li>
-        <li class="bnt btn-outline-primary btn-sm" @click="select(4)">I workout 5-7 times per week</li>
+        {{ title }}
+        <li class="bnt btn-outline-primary btn-sm" v-for="activity in activities" @click="select(activity.id)">{{ activity.translation.translation }}</li>
     </ul>
 </template>
 <script>
     export default {
+        props: ['title', 'activities'],
         methods: {
             select(activityId) {
                 this.$emit('selected', {

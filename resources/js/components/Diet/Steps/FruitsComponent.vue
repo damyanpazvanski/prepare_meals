@@ -1,9 +1,10 @@
 <template>
     <div class="col-12 products-list">
-        <div class="row mb-3" v-for="fruitTitle in fruitsTitles">
+        {{ title }}
+        <div class="row mb-3" v-for="fruit in fruits.eatables">
             <div class="custom-checkbox custom-control">
-                <input type="checkbox" :id="fruitTitle" :name="fruitTitle" :value="fruitTitle" v-model="fruits" class="custom-control-input">
-                <label :for="fruitTitle" class="col-12 pl-4 custom-control-label">{{ fruitTitle }}</label>
+                <input type="checkbox" :id="'fruit-' + fruit.id" :name="'fruit-' + fruit.id" :value="fruit.id" v-model="chosenFruits" class="custom-control-input">
+                <label :for="'fruit-' + fruit.id" class="col-12 pl-4 custom-control-label">{{ fruit.translation.translation }}</label>
             </div>
         </div>
 
@@ -12,21 +13,21 @@
 </template>
 <script>
     export default {
-        props: ['fruitsTitles'],
+        props: ['title', 'fruits'],
         data() {
             return {
-                fruits: []
+                chosenFruits: []
             }
         },
         methods: {
             select() {
-                if (this.fruits.length < 1) {
+                if (this.chosenFruits.length < 1) {
                     this.$emit('error');
                     return;
                 }
 
                 this.$emit('selected', {
-                    'fruits': this.fruits
+                    'fruits': this.chosenFruits
                 })
             }
         }

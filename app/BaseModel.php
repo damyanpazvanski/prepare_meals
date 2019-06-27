@@ -27,4 +27,11 @@ class BaseModel extends Model
     {
         return $this->belongsTo(Translation::class, 'translation_id');
     }
+
+    public function scopeWithTranslations($query, $language)
+    {
+        return $query->with(['translation' => function ($query) use ($language) {
+            $query->select('id', 'key', $language . ' as translation');
+        }]);
+    }
 }

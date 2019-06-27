@@ -1,14 +1,12 @@
 <template>
     <ul class="activities col-12 text-center">
-        <li class="bnt btn-outline-primary btn-sm" @click="select(0)">1 time</li>
-        <li class="bnt btn-outline-primary btn-sm" @click="select(1)">2 times</li>
-        <li class="bnt btn-outline-primary btn-sm" @click="select(2)">3 times</li>
-        <li class="bnt btn-outline-primary btn-sm" @click="select(3)">4 times</li>
-        <li class="bnt btn-outline-primary btn-sm" @click="select(4)">Every day is different</li>
+        {{ title }}
+        <li class="bnt btn-outline-primary btn-sm" v-for="meal in meals" @click="select(meal.id)">{{ meal.translation.translation }}</li>
     </ul>
 </template>
 <script>
     export default {
+        props: ['title', 'meals'],
         methods: {
             select(mealId) {
                 this.$emit('selected', {

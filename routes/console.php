@@ -22,4 +22,5 @@ Artisan::command('db:seed', function () {
     $this->callSilent('add:activities', []);
     $this->callSilent('add:daily-routines', []);
     $this->callSilent('add:meals', []);
+    $this->callSilent('add:eatables', []);
 });

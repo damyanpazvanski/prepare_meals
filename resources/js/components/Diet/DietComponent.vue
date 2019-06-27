@@ -30,19 +30,28 @@
                                     <div class="alert alert-danger">All fields are required!</div>
                                 </div>
 
-                                <gender v-if="page === 1" @selected="selected"></gender>
-                                <measures v-if="page === 2" @selected="selected" @error="error"></measures>
-                                <activity v-if="page === 3" @selected="selected"></activity>
-                                <daily-routine v-if="page === 4" @selected="selected"></daily-routine>
-                                <meats v-if="page === 5" @selected="selected" @error="error" :meats-titles="trans.meats"></meats>
-                                <vegetables v-if="page === 6" @selected="selected" @error="error" :vegetables-titles="trans.vegetables"></vegetables>
-                                <fruits v-if="page === 7" @selected="selected" @error="error" :fruits-titles="trans.fruits"></fruits>
-                                <products v-if="page === 8" @selected="selected" @error="error" :products-titles="trans.products"></products>
-                                <meals v-if="page === 9" @selected="selected"></meals>
+                                <gender v-if="page === 1" @selected="selected" :genders="genders"></gender>
+                                <measures v-if="page === 2" @selected="selected" @error="error" :measure-fields="trans.measure_fields" :title="trans.measures"></measures>
 
+                                <activity v-if="page === 3" @selected="selected" :activities="activities" :title="trans.activity"></activity>
+                                <daily-routine v-if="page === 4" @selected="selected" :routines="routines" :title="trans.how_your_day_goinig"></daily-routine>
+
+                                <meats v-if="page === 5" @selected="selected" @error="error"
+                                       :meats="categories.meats" :title="trans.what_meat_prefer"></meats>
+
+                                <vegetables v-if="page === 6" @selected="selected" @error="error"
+                                            :vegetables="categories.vegetables" :title="trans.what_vegetables_prefer"></vegetables>
+
+                                <fruits v-if="page === 7" @selected="selected" @error="error"
+                                        :fruits="categories.fruits" :title="trans.what_fruits_prefer"></fruits>
+
+                                <products v-if="page === 8" @selected="selected" @error="error"
+                                          :products="categories.products" :title="trans.what_products_prefer"></products>
+
+                                <meals v-if="page === 9" @selected="selected" :meals="meals" :title="trans.how_many_meals"></meals>
                                 <last-page v-if="isLastPage" :data="userData"></last-page>
 
-                                <button class="btn btn-dark btn-lg btn-block mt-4" v-if="!isLastPage" @click="back">Back</button>
+                                <button class="btn btn-dark btn-lg btn-block mt-4" v-if="page !== 1 && page !== maxPages && !isLastPage" @click="back">Back</button>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -88,7 +97,7 @@
     import LastPage from './Steps/LastPageComponent';
 
     export default {
-        props: ['trans'],
+        props: ['trans', 'genders', 'activities', 'routines', 'meals', 'categories'],
         components: {
             LastPage,
             'header-component': Header,

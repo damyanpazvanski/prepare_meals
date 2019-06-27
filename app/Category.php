@@ -11,4 +11,9 @@ class Category extends BaseModel
     protected $fillable = [
         'name'
     ];
+
+    public function eatables()
+    {
+        return $this->hasMany(Eatable::class,'category_id');
+    }
 }
